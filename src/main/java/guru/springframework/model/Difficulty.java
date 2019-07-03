@@ -1,4 +1,4 @@
-package guru.springframework.Model;
+package guru.springframework.model;
 
 public enum Difficulty {
     EASY, MODERATE, HARD

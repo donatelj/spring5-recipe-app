@@ -1,4 +1,4 @@
-package guru.springframework.Model;
+package guru.springframework.model;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -27,12 +27,17 @@ public class Recipe {
     @Cascade(CascadeType.ALL)
     private Note note;
 
-    @OneToMany(mappedBy = "recipe")
+    @OneToMany
     @Cascade(CascadeType.ALL)
     private Set<Ingredient> ingredients;
 
     @Enumerated(value = EnumType.STRING)
     private Difficulty difficulty;
+
+    @ManyToMany
+    @JoinTable(name = "recipe_category", joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set<Category> categories;
+
 
     public Long getId() {
         return id;
