@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Home</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>My Recipes!</h1>
+
+    <ul th:each="recipe: ${recipes}">
+        <li><h2 th:text="${recipe.description}">Recette 1</h2>
+            <ul>
+                <li><h3>Category</h3>
+                    <ul th:each="category: ${recipe.categories}">
+                        <li><p th:text="${category.description}">Side dish</p></li>
+                    </ul>
+                </li>
+                <li><h3>Difficulty</h3>
+                    <ul>
+                        <li><p th:text="${recipe.difficulty}">EASY</p></li>
+                    </ul>
+                </li>
+                <li><h3>Preparation Time</h3>
+                    <ul>
+                        <li><p th:text="${recipe.prepTime.toString()}">20</p></li>
+                    </ul>
+                </li>
+                <li><h3>Cook Time</h3>
+                    <ul>
+                        <li><p th:text="${recipe.cookTime.toString()}">15</p></li>
+                    </ul>
+                </li>
+                <li><h3>Servings</h3>
+                    <ul>
+                        <li><p th:text="${recipe.servings.toString()}">4</p></li>
+                    </ul>
+                </li>
+                <li><h3>Note</h3>
+                    <ul>
+                        <li><p th:text="${recipe.note.recipeNotes}">So many notes...</p></li>
+                    </ul>
+                </li>
+                <li><h3>Ingredients</h3>
+                    <ul th:each="ingredient: ${recipe.ingredients}">
+                        <li><span th:text="${ingredient.description}">My ingredients</span></li>
+                    </ul>
+                </li>
+                <li><h3>Directions</h3>
+                    <ul>
+                        <li><p th:text="${recipe.directions}">How to make it...</p></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+</html>
