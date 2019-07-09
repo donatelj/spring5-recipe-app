@@ -4,10 +4,12 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Transactional
 public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
