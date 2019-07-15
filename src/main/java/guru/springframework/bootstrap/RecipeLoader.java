@@ -1,6 +1,6 @@
 package guru.springframework.bootstrap;
 
-import guru.springframework.model.*;
+import guru.springframework.domain.*;
 import guru.springframework.repositories.CategoryRepository;
 import guru.springframework.repositories.RecipeRepository;
 import guru.springframework.repositories.UnitOfMesureRepository;
@@ -38,7 +38,7 @@ public class RecipeLoader implements ApplicationListener<ContextRefreshedEvent> 
     void loadRecipes() {
         Set<Category> guacamoleCategories = new HashSet<>();
         Recipe guacamole = new Recipe();
-        Note guacamoleNotes = new Note(guacamole);
+        Notes guacamoleNotes = new Notes();
 
         guacamoleCategories.add(categoryRepository.findByDescription("Dip").get());
         guacamoleCategories.add(categoryRepository.findByDescription("Mexican").get());
@@ -64,7 +64,8 @@ public class RecipeLoader implements ApplicationListener<ContextRefreshedEvent> 
         guacamole.setPrepTime(10);
         guacamole.setCookTime(0);
         guacamole.setServings(4);
-        guacamole.setNote(guacamoleNotes);
+        guacamole.setNotes(guacamoleNotes);
+        guacamole.setUrl("http://www.simplyrecipes.com/recipes/perfect_guacamole/");
         guacamole.setDirections("1 Cut avocado, remove flesh: Cut the avocados in half. Remove seed. \n" +
                 "Score the inside of the avocado with a blunt knife and scoop out the flesh with a spoon. \n" +
                 "(See How to Cut and Peel an Avocado.) Place in a bowl. \n\n" +
@@ -94,7 +95,7 @@ public class RecipeLoader implements ApplicationListener<ContextRefreshedEvent> 
 
         Set<Category> chickenTacosCategories = new HashSet<>();
         Recipe chickenTacos = new Recipe();
-        Note chickenTacosNotes = new Note(chickenTacos);
+        Notes chickenTacosNotes = new Notes();
 
         chickenTacosCategories.add(categoryRepository.findByDescription("Dinner").get());
         chickenTacosCategories.add(categoryRepository.findByDescription("Grill").get());
@@ -132,7 +133,8 @@ public class RecipeLoader implements ApplicationListener<ContextRefreshedEvent> 
         chickenTacos.setPrepTime(20);
         chickenTacos.setCookTime(15);
         chickenTacos.setServings(6);
-        chickenTacos.setNote(chickenTacosNotes);
+        chickenTacos.setNotes(chickenTacosNotes);
+        chickenTacos.setUrl("http://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/");
         chickenTacos.setDirections("1 Prepare a gas or charcoal grill for medium-high, direct heat.\n\n" +
                 "2 Make the marinade and coat the chicken: In a large bowl, stir together \n" +
                 "the chili powder, oregano, cumin, sugar, salt, garlic and orange zest. Stir in \n" +
